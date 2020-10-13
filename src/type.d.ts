@@ -1,8 +1,15 @@
 interface IBook {
   title: string;
   author: string;
-  pages: number;
-  year: number;
+  pages: number | string;
+  year: number | string;
+}
+
+interface FormValues {
+  title: string;
+  author: string;
+  pages: number | string;
+  year: number | string;
 }
 
 type BookState = {
@@ -13,5 +20,3 @@ type BookAction = {
   type: string;
   book: IBook;
 };
-
-type DispatchType = (args: BookAction) => BookAction;

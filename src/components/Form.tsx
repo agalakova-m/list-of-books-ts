@@ -5,23 +5,28 @@ import { addBook } from '../store/actionCreators';
 
 import { Formik, Field, Form } from 'formik';
 
-const initialValues = {
+const initialValues: FormValues = {
   title: '',
   author: '',
   pages: '',
   year: '',
 };
 
-const CustomForm: React.FC = ({ addBook }) => {
+type IProps = {
+  addBook: (book: IBook) => void;
+};
+
+const CustomForm: React.FC<IProps> = ({ addBook }) => {
   const [values, setValues] = useState(initialValues);
 
-  const onSubmit = (values) => {
+  const onSubmit = (values: FormValues) => {
     const newBook = values;
+    console.log(newBook);
     addBook(newBook);
     setValues(initialValues);
   };
 
-  function onInputChange(e) {
+  function onInputChange(e: React.ChangeEvent<HTMLInputElement>) {
     const name = e.target.name;
     const value = e.target.value;
     setValues({ ...values, [name]: value });
@@ -40,7 +45,7 @@ const CustomForm: React.FC = ({ addBook }) => {
               id="title"
               name="title"
               placeholder="e.g. Normal People"
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
               value={values.title}
               required
             />
@@ -54,7 +59,7 @@ const CustomForm: React.FC = ({ addBook }) => {
               id="author"
               name="author"
               placeholder="e.g. Sally Rooney"
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
               value={values.author}
               required
             />
@@ -71,7 +76,7 @@ const CustomForm: React.FC = ({ addBook }) => {
               type="number"
               min={10}
               max={2000}
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
               value={values.pages}
             />
           </div>
@@ -87,7 +92,7 @@ const CustomForm: React.FC = ({ addBook }) => {
               type="number"
               min={1000}
               max={2020}
-              onChange={(e) => onInputChange(e)}
+              onChange={onInputChange}
               value={values.year}
             />
           </div>
