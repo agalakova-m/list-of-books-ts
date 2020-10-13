@@ -18,5 +18,5 @@ type BookState = {
 
 type BookAction = {
   type: string;
-  book: IBook;
+  payload: IBook;
 };

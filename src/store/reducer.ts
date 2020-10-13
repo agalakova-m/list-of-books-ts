@@ -11,7 +11,7 @@ export const rootReducer = (
 ): BookState => {
   switch (action.type) {
     case ADD_BOOK:
-      return { ...state, books: state.books.concat([action.book]) };
+      return { ...state, books: state.books.concat([action.payload]) };
     default:
       return state;
   }

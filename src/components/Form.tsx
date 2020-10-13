@@ -21,7 +21,6 @@ const CustomForm: React.FC<IProps> = ({ addBook }) => {
 
   const onSubmit = (values: FormValues) => {
     const newBook = values;
-    console.log(newBook);
     addBook(newBook);
     setValues(initialValues);
   };
